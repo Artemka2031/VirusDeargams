@@ -1,0 +1,15 @@
+// Взаимодействие нерезидентного вируса
+digraph {
+	TRIGGER [label="Триггер запуска" shape=ellipse]
+	START [label="Запуск вирусного ПО"]
+	CHK_AV [label="Проверка наличия антивируса" shape=diamond]
+	REPEAT [label="Повтор" shape=parallelogram]
+	VIRUS_WORK [label="Работа вирусного ПО" shape=parallelogram]
+	END [label="Завершение работы вируса" shape=ellipse]
+	TRIGGER -> START [label="Активация"]
+	START -> CHK_AV [label="Запуск"]
+	CHK_AV -> REPEAT [label="Антивирус обнаруживает"]
+	REPEAT -> START [label="Возврат к началу"]
+	CHK_AV -> VIRUS_WORK [label="Антивирус не обнаруживает"]
+	VIRUS_WORK -> END [label="Выполнено"]
+}
